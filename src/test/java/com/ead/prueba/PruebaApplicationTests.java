@@ -3,10 +3,10 @@ package com.ead.prueba;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class PruebaApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 
