@@ -1,5 +1,9 @@
 server:
-  port: 8013
+  error:
+    whitelabel:
+      enabled: true
+    include-stacktrace: never
+  port: 8180
 
 # Configuracion de conexion a la base de datos MySQL
 spring:
