@@ -64,6 +64,16 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<type>jar</type>
+		</dependency>	
+		<dependency>
+		    <groupId>io.fusionauth</groupId>
+		    <artifactId>fusionauth-jwt</artifactId>
+		    <version>4.2.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
