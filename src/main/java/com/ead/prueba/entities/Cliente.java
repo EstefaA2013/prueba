@@ -1,4 +1,4 @@
-package com.ead.prueba;
+package com.ead.prueba.entities;
 
 import java.io.Serializable;
 
