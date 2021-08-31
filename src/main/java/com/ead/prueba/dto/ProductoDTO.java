@@ -21,5 +21,5 @@ public class ProductoDTO implements Serializable {
 	private double precioEnvio;
 	private int idCliente;
 	private int codigoTransporte;
-	
+	private double descuento;
 }

@@ -40,6 +40,8 @@ public class Producto implements Serializable {
 	private int idCliente;
 	@Column(name = "codigo_transporte")
 	private int codigoTransporte;
+	@Column(name = "descuento")
+	private int descuento;
 	
 
 	@PrePersist
