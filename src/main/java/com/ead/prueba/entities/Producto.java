@@ -36,8 +36,6 @@ public class Producto implements Serializable {
 	private Date fechaEntrega;
 	@Column(name = "precio_envio")
 	private double precioEnvio;
-	@Column(name = "numero_guia")
-	private String numeroGuia;
 	@Column(name = "id_cliente")
 	private int idCliente;
 	@Column(name = "codigo_transporte")

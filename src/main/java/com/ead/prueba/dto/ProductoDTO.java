@@ -19,7 +19,6 @@ public class ProductoDTO implements Serializable {
 	private Date fechaRegistro;
 	private Date fechaEntrega;
 	private double precioEnvio;
-	private String numeroGuia;
 	private int idCliente;
 	private int codigoTransporte;
 	
