@@ -6,7 +6,10 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -27,6 +30,7 @@ public class Producto implements Serializable {
 	@Column(name = "cantidad_producto")
 	private int cantidadProducto;
 	@Column(name = "fecha_registro")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaRegistro;
 	@Column(name = "fecha_entrega")
 	private Date fechaEntrega;
@@ -40,4 +44,8 @@ public class Producto implements Serializable {
 	private int codigoTransporte;
 	
 
+	@PrePersist
+	public void prePersist() {
+		this.fechaRegistro = new Date();
+	}
 }
