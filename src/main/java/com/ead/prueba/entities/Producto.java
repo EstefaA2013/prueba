@@ -27,7 +27,7 @@ public class Producto implements Serializable {
 	private int id;
 	@Column(name = "tipo_producto")
 	private String tipoProducto;
-	@Column(name = "cantidad_producto")
+	@Column(name = "cantidad_ producto")
 	private int cantidadProducto;
 	@Column(name = "id_cliente")
 	private int idCliente;
