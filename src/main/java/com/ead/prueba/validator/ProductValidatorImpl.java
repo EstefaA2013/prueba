@@ -20,12 +20,6 @@ public class ProductValidatorImpl implements ProductValidator {
 		if (request.getCantidadProducto() < 0) {
 			message("La cantidad del producto debe ser mayor de 0");
 		}
-		if (request.getFechaEntrega() == null) {
-			message("La fecha de entrega es obligatoria");
-		}
-		if (request.getPrecioEnvio() < 0) {
-			message("El precio del envio debe ser mayor a 0");
-		}
 
 	}
 
@@ -34,5 +28,4 @@ public class ProductValidatorImpl implements ProductValidator {
 		throw new ApiUnprocessableEntity(message);
 
 	}
-
 }

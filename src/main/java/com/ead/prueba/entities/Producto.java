@@ -29,23 +29,10 @@ public class Producto implements Serializable {
 	private String tipoProducto;
 	@Column(name = "cantidad_producto")
 	private int cantidadProducto;
-	@Column(name = "fecha_registro")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date fechaRegistro;
-	@Column(name = "fecha_entrega")
-	private Date fechaEntrega;
-	@Column(name = "precio_envio")
-	private double precioEnvio;
 	@Column(name = "id_cliente")
 	private int idCliente;
-	@Column(name = "codigo_transporte")
-	private int codigoTransporte;
-	@Column(name = "descuento")
-	private double descuento;
-	
+	@Column(name = "id_logistica")
+	private int idLogistica;
 
-	@PrePersist
-	public void prePersist() {
-		this.fechaRegistro = new Date();
-	}
 }
+

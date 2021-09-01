@@ -5,10 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.ead.prueba.dto.ClienteDTO;
 import com.ead.prueba.dto.ProductoDTO;
 import com.ead.prueba.dto.ProductoRequest;
-import com.ead.prueba.entities.Cliente;
 import com.ead.prueba.entities.Producto;
 import com.ead.prueba.repository.ProductRepository;
 import com.ead.prueba.services.interfaces.IProductoService;
@@ -18,7 +16,7 @@ import com.ead.prueba.utils.helpers.MHelpers;
 public class ProductImpl implements IProductoService {
 
 	private ProductRepository productRepository;
-	
+
 	@Override
 	public List<ProductoDTO> findAll() {
 		List<ProductoDTO> dto = new ArrayList<>();
@@ -69,5 +67,4 @@ public class ProductImpl implements IProductoService {
 	private ProductoDTO convertToProductosDTO(final Producto producto) {
 	    return MHelpers.modelMapper().map(producto, ProductoDTO.class);
 	}
-	
 }
