@@ -1,28 +1,39 @@
 package com.ead.prueba.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.ead.prueba.dto.ClienteDTO;
 import com.ead.prueba.dto.ProductoDTO;
 import com.ead.prueba.dto.ProductoRequest;
+import com.ead.prueba.entities.Cliente;
+import com.ead.prueba.entities.Producto;
+import com.ead.prueba.repository.ProductRepository;
 import com.ead.prueba.services.interfaces.IProductoService;
-
-
+import com.ead.prueba.utils.helpers.MHelpers;
 
 @Component
 public class ProductImpl implements IProductoService {
 
+	private ProductRepository productRepository;
+	
 	@Override
 	public List<ProductoDTO> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		List<ProductoDTO> dto = new ArrayList<>();
 
-	@Override
-	public ProductoDTO findByProductType(String tipoProducto) {
-		// TODO Auto-generated method stub
-		return null;
+		Iterable<Producto> productos = this.productRepository.findAll();
+
+		for (Producto producto : productos) {
+
+			ProductoDTO productoDTO = MHelpers.modelMapper().map(producto, ProductoDTO.class);
+
+			dto.add(productoDTO);
+
+		}
+
+		return dto;
 	}
 
 	@Override
@@ -55,4 +66,8 @@ public class ProductImpl implements IProductoService {
 		
 	}
 
+	private ProductoDTO convertToProductosDTO(final Producto producto) {
+	    return MHelpers.modelMapper().map(producto, ProductoDTO.class);
+	}
+	
 }

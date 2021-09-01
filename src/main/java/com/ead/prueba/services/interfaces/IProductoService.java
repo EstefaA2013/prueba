@@ -12,8 +12,6 @@ public interface IProductoService {
 
 	List<ProductoDTO> findAll();
 
-	ProductoDTO findByProductType(String tipoProducto);
-
 	ProductoDTO findByProductId(int productoId);
 
 	void save(ProductoRequest producto);

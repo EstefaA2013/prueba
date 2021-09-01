@@ -61,7 +61,7 @@ public class ClienteController {
 	}
 	
 	@PutMapping(value = "/{clienteId}/update")
-	public ResponseEntity<Object> updateCustomer(@RequestBody ClienteRequest request, @PathVariable int clienteId) {
+	public ResponseEntity<Object> updateCustomer(@RequestBody ClienteRequest request, @PathVariable int clienteId) throws ApiUnprocessableEntity {
 		
 		this.clienteService.update(request, clienteId);
 		return ResponseEntity.ok(Boolean.TRUE);

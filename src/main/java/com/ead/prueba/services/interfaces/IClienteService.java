@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.ead.prueba.dto.ClienteDTO;
 import com.ead.prueba.dto.ClienteRequest;
+import com.ead.prueba.utils.exceptions.ApiUnprocessableEntity;
 
 
 @Service
@@ -17,7 +18,7 @@ public interface IClienteService {
 	
 	void save(ClienteRequest cliente);
 	
-	void update(ClienteRequest cliente, int clienteId);
+	void update(ClienteRequest cliente, int clienteId) throws ApiUnprocessableEntity;
 	
 	void saveAll(List<ClienteRequest> cliente);
 	

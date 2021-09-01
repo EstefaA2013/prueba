@@ -12,6 +12,7 @@ import com.ead.prueba.dto.ClienteRequest;
 import com.ead.prueba.entities.Cliente;
 import com.ead.prueba.repository.ClienteRepository;
 import com.ead.prueba.services.interfaces.IClienteService;
+import com.ead.prueba.utils.exceptions.ApiUnprocessableEntity;
 import com.ead.prueba.utils.helpers.MHelpers;
 
 @Component
@@ -60,18 +61,21 @@ public class ClienteImpl implements IClienteService {
 	}
 
 	@Override
-	public void update(ClienteRequest request, int clienteId) {
+	public void update(ClienteRequest request, int clienteId) throws ApiUnprocessableEntity {
 		Optional<Cliente> clientes = this.clienteRepository.findById(clienteId);
 
-		Cliente cliente = clientes.get();
+		if (clientes.isPresent()) {
+			Cliente cliente = clientes.get();
 
-		cliente.setNombre(request.getNombre());
-		cliente.setApellido(request.getApellido());
-		cliente.setCedula(request.getCedula());
-		cliente.setCelular(request.getCelular());
+			cliente.setNombre(request.getNombre());
+			cliente.setApellido(request.getApellido());
+			cliente.setCedula(request.getCedula());
+			cliente.setCelular(request.getCelular());
 
-		this.clienteRepository.save(cliente);
-
+			this.clienteRepository.save(cliente);
+		}else {
+			message("El id del cliente no existe");
+		}
 	}
 
 	@Override
@@ -99,5 +103,9 @@ public class ClienteImpl implements IClienteService {
 	    return MHelpers.modelMapper().map(cliente, ClienteDTO.class);
 	}
 
-	
+	private void message(String message) throws ApiUnprocessableEntity {
+
+		throw new ApiUnprocessableEntity(message);
+
+	}
 }

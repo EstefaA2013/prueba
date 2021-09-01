@@ -41,7 +41,7 @@ public class Producto implements Serializable {
 	@Column(name = "codigo_transporte")
 	private int codigoTransporte;
 	@Column(name = "descuento")
-	private int descuento;
+	private double descuento;
 	
 
 	@PrePersist
