@@ -41,7 +41,11 @@ public class ClienteImpl implements IClienteService {
 
 	@Override
 	public ClienteDTO findByCustomerId(int clienteId) {
-       
+       /*
+        * Método para buscar un cliente por su Id,
+        * si el Id no existe en la base de datos
+        * nos retorna null
+        */
 		Optional<Cliente> cliente = this.clienteRepository.findById(clienteId);
         
         if(!cliente.isPresent()) {
@@ -64,6 +68,11 @@ public class ClienteImpl implements IClienteService {
 	public void update(ClienteRequest request, int clienteId) throws ApiUnprocessableEntity {
 		Optional<Cliente> clientes = this.clienteRepository.findById(clienteId);
 
+		/*
+		 * Este método nos actualiza la base de datos,
+		 * y nos manda un mensaje si el cliente no existe
+		 */
+		
 		if (clientes.isPresent()) {
 			Cliente cliente = clientes.get();
 
@@ -108,4 +117,5 @@ public class ClienteImpl implements IClienteService {
 		throw new ApiUnprocessableEntity(message);
 
 	}
+
 }
