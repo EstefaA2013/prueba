@@ -1,8 +1,9 @@
 package com.ead.prueba.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 
+import com.ead.prueba.entities.Cliente;
+import com.ead.prueba.entities.Logistica;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
@@ -20,7 +21,7 @@ public class ProductoRequest implements Serializable {
 	@JsonProperty(value = "cantidad_producto")
 	private int cantidadProducto;
 	@JsonProperty(value = "id_cliente")
-	private int idCliente;
+	private Cliente cliente;
 	@JsonProperty(value = "id_logistica")
-	private int idLogistica;
+	private Logistica logistica;
 }

@@ -1,5 +1,6 @@
 package com.ead.prueba.entities;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
