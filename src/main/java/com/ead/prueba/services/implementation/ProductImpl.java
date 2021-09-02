@@ -3,6 +3,7 @@ package com.ead.prueba.services.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ead.prueba.dto.ProductoDTO;
@@ -15,6 +16,7 @@ import com.ead.prueba.utils.helpers.MHelpers;
 @Component
 public class ProductImpl implements IProductoService {
 
+	@Autowired
 	private ProductRepository productRepository;
 
 	@Override
@@ -43,28 +45,28 @@ public class ProductImpl implements IProductoService {
 	@Override
 	public void save(ProductoRequest producto) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(ProductoRequest producto, int productoId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void saveAll(List<ProductoRequest> producto) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteById(int productoId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private ProductoDTO convertToProductosDTO(final Producto producto) {
-	    return MHelpers.modelMapper().map(producto, ProductoDTO.class);
+		return MHelpers.modelMapper().map(producto, ProductoDTO.class);
 	}
 }

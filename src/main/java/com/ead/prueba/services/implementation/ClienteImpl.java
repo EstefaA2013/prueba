@@ -24,36 +24,34 @@ public class ClienteImpl implements IClienteService {
 	@Override
 	public List<ClienteDTO> findAll() {
 
-
 		List<ClienteDTO> dto = new ArrayList<>();
-		
+
 		Iterable<Cliente> clientes = this.clienteRepository.findAll();
-		
+
 		for (Cliente cliente : clientes) {
-	    	
-	    	ClienteDTO clienteDTO = MHelpers.modelMapper().map(cliente, ClienteDTO.class);
-    
-        	dto.add(clienteDTO);
-	    }
-		
+
+			ClienteDTO clienteDTO = MHelpers.modelMapper().map(cliente, ClienteDTO.class);
+
+			dto.add(clienteDTO);
+		}
+
 		return dto;
 	}
 
 	@Override
 	public ClienteDTO findByCustomerId(int clienteId) {
-       /*
-        * Método para buscar un cliente por su Id,
-        * si el Id no existe en la base de datos
-        * nos retorna null
-        */
+		/*
+		 * Método para buscar un cliente por su Id, si el Id no existe en la base de
+		 * datos nos retorna null
+		 */
 		Optional<Cliente> cliente = this.clienteRepository.findById(clienteId);
-        
-        if(!cliente.isPresent()) {
-        	return null;
-        }
-        
-        return MHelpers.modelMapper().map(cliente.get(), ClienteDTO.class);
-	
+
+		if (!cliente.isPresent()) {
+			return null;
+		}
+
+		return MHelpers.modelMapper().map(cliente.get(), ClienteDTO.class);
+
 	}
 
 	@Override
@@ -69,10 +67,10 @@ public class ClienteImpl implements IClienteService {
 		Optional<Cliente> clientes = this.clienteRepository.findById(clienteId);
 
 		/*
-		 * Este método nos actualiza la base de datos,
-		 * y nos manda un mensaje si el cliente no existe
+		 * Este método nos actualiza la base de datos, y nos manda un mensaje si el
+		 * cliente no existe
 		 */
-		
+
 		if (clientes.isPresent()) {
 			Cliente cliente = clientes.get();
 
@@ -82,7 +80,7 @@ public class ClienteImpl implements IClienteService {
 			cliente.setCelular(request.getCelular());
 
 			this.clienteRepository.save(cliente);
-		}else {
+		} else {
 			message("El id del cliente no existe");
 		}
 	}
@@ -104,12 +102,12 @@ public class ClienteImpl implements IClienteService {
 
 	@Override
 	public void deleteById(int clienteId) {
-		
+
 		this.clienteRepository.deleteById(clienteId);
 	}
-	
+
 	private ClienteDTO convertToUsersDTO(final Cliente cliente) {
-	    return MHelpers.modelMapper().map(cliente, ClienteDTO.class);
+		return MHelpers.modelMapper().map(cliente, ClienteDTO.class);
 	}
 
 	private void message(String message) throws ApiUnprocessableEntity {
