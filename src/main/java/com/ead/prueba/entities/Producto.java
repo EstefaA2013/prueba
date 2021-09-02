@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -29,10 +31,12 @@ public class Producto implements Serializable {
 	private String tipoProducto;
 	@Column(name = "cantidad_ producto")
 	private int cantidadProducto;
-	@Column(name = "id_cliente")
-	private int idCliente;
-	@Column(name = "id_logistica")
-	private int idLogistica;
+	@ManyToOne
+	@JoinColumn(name = "id_cliente")
+	private Cliente cliente;
+	@ManyToOne
+	@JoinColumn(name = "id_logistica")
+	private Logistica logistica;
 
 }
 
