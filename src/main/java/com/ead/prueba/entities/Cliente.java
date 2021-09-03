@@ -1,10 +1,13 @@
 package com.ead.prueba.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -14,7 +17,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "cliente")
+@Table(name = "clientes")
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,4 +32,5 @@ public class Cliente implements Serializable {
 	private String cedula;
 	@Column(name = "celular")
 	private String celular;
+	
 }

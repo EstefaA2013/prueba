@@ -15,7 +15,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "trans_maritima")
+@Table(name = "trans_maritimos")
 @PrimaryKeyJoinColumn(referencedColumnName = "codigo")
 public class Maritima extends Transporte implements Serializable {
 

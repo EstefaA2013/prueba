@@ -9,13 +9,15 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "producto")
+@Table(name = "productos")
 public class Producto implements Serializable {
 
 	/**
@@ -27,12 +29,14 @@ public class Producto implements Serializable {
 	private int id;
 	@Column(name = "tipo_producto")
 	private String tipoProducto;
-	@Column(name = "cantidad_ producto")
+	@Column(name = "cantidad_producto")
 	private int cantidadProducto;
-	@ManyToOne
+	@OneToOne
+	@MapsId
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@OneToOne
+	@MapsId
 	@JoinColumn(name = "id_logistica")
 	private Logistica logistica;
 
