@@ -2,12 +2,15 @@ package com.ead.prueba.services.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ead.prueba.dto.ClienteDTO;
 import com.ead.prueba.dto.ProductoDTO;
 import com.ead.prueba.dto.ProductoRequest;
+import com.ead.prueba.entities.Cliente;
 import com.ead.prueba.entities.Producto;
 import com.ead.prueba.repository.ProductRepository;
 import com.ead.prueba.services.interfaces.IProductoService;
@@ -38,8 +41,18 @@ public class ProductImpl implements IProductoService {
 
 	@Override
 	public ProductoDTO findByProductId(int productoId) {
-		// TODO Auto-generated method stub
-		return null;
+		/*
+		 * Método para buscar un producto por su Id, si el Id no existe en la base de
+		 * datos nos retorna null
+		 */
+		Optional<Producto> producto = this.productRepository.findById(productoId);
+
+		if (!producto.isPresent()) {
+			return null;
+		}
+
+		return MHelpers.modelMapper().map(producto.get(), ProductoDTO.class);
+
 	}
 
 	@Override
