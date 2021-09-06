@@ -1,6 +1,7 @@
 package com.ead.prueba.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,5 +33,8 @@ public class Cliente implements Serializable {
 	private String cedula;
 	@Column(name = "celular")
 	private String celular;
+	
+	@OneToMany(mappedBy = "cliente")
+	private Collection<Producto> productos;
 	
 }

@@ -1,6 +1,7 @@
 package com.ead.prueba.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -39,12 +40,15 @@ public class Logistica implements Serializable {
 	private Date fechaEntrega;
 	@Column(name = "precio_envio")
 	private double precioEnvio;
-	@OneToOne
+	@ManyToOne
 	@MapsId
 	@JoinColumn(name = "codigo_transporte")
 	private Transporte transporte;
 	@Column(name = "descuento")
 	private double descuento;
+	
+	@OneToMany(mappedBy = "logistica")
+	private Collection<Producto> productos;
 	
 	
 	@PrePersist

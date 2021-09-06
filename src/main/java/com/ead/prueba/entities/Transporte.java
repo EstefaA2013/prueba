@@ -1,6 +1,7 @@
 package com.ead.prueba.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -36,6 +37,9 @@ public class Transporte implements Serializable {
 	private String tipo;
 	@Column(name = "numero_guia")
 	private String numero_guia;
+	
+	@OneToMany(mappedBy = "transporte")
+	private Collection<Logistica> logisticas;
 	
 	
 }
