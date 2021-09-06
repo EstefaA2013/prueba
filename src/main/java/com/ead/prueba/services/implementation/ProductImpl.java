@@ -12,6 +12,7 @@ import com.ead.prueba.dto.ProductoRequest;
 import com.ead.prueba.entities.Producto;
 import com.ead.prueba.repository.ProductRepository;
 import com.ead.prueba.services.interfaces.IProductoService;
+import com.ead.prueba.utils.exceptions.ApiUnprocessableEntity;
 import com.ead.prueba.utils.helpers.MHelpers;
 
 @Component
@@ -61,8 +62,21 @@ public class ProductImpl implements IProductoService {
 	}
 
 	@Override
-	public void update(ProductoRequest producto, int productoId) {
-		// TODO Auto-generated method stub
+	public void update(ProductoRequest request, int productoId) throws ApiUnprocessableEntity {
+        Optional<Producto> productos = this.productRepository.findById(productoId);
+        
+        if(productos.isPresent()) {
+        	Producto producto = productos.get();
+        	
+        	producto.setTipoProducto(request.getTipoProducto());;
+        	producto.setCantidadProducto(request.getCantidadProducto());        	
+        
+        	this.productRepository.save(producto);
+        } else {
+        	message("El id del producto no existe");
+        }
+
+		
 
 	}
 
@@ -80,5 +94,11 @@ public class ProductImpl implements IProductoService {
 
 	private ProductoDTO convertToProductosDTO(final Producto producto) {
 		return MHelpers.modelMapper().map(producto, ProductoDTO.class);
+	}
+	
+	private void message(String message) throws ApiUnprocessableEntity {
+
+		throw new ApiUnprocessableEntity(message);
+
 	}
 }

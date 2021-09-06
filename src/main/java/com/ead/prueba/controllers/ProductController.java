@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ead.prueba.dto.ClienteRequest;
 import com.ead.prueba.dto.ProductoRequest;
 import com.ead.prueba.services.interfaces.IProductoService;
 import com.ead.prueba.utils.exceptions.ApiUnprocessableEntity;
@@ -47,5 +49,12 @@ public class ProductController {
 
 		return ResponseEntity.ok(Boolean.TRUE);
 
+	}
+	
+	@PutMapping(value = "/{productoId}/update")
+	public ResponseEntity<Object> updateCustomer(@RequestBody ProductoRequest request, @PathVariable int productoId) throws ApiUnprocessableEntity {
+		
+		this.productoService.update(request, productoId);
+		return ResponseEntity.ok(Boolean.TRUE);
 	}
 }
