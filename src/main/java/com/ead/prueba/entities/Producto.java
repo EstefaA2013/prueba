@@ -31,11 +31,11 @@ public class Producto implements Serializable {
 	private String tipoProducto;
 	@Column(name = "cantidad_producto")
 	private int cantidadProducto;
-	@OneToOne
+	@ManyToOne
 	@MapsId
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
-	@OneToOne
+	@ManyToOne
 	@MapsId
 	@JoinColumn(name = "id_logistica")
 	private Logistica logistica;

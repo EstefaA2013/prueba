@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import com.ead.prueba.dto.ProductoDTO;
 import com.ead.prueba.dto.ProductoRequest;
+import com.ead.prueba.entities.Cliente;
+import com.ead.prueba.entities.Logistica;
 import com.ead.prueba.entities.Producto;
 import com.ead.prueba.repository.ProductRepository;
 import com.ead.prueba.services.interfaces.IProductoService;
@@ -57,7 +59,12 @@ public class ProductImpl implements IProductoService {
 	@Override
 	public void save(ProductoRequest producto) {
 		Producto productos = MHelpers.modelMapper().map(producto, Producto.class);
-
+        Cliente cliente = new Cliente();
+        cliente.setId(cliente.getId());
+		productos.setCliente(cliente);
+		Logistica logistica = new Logistica();
+		logistica.setId(logistica.getId());
+		productos.setLogistica(logistica);
 		this.productRepository.save(productos);
 	}
 
@@ -88,7 +95,8 @@ public class ProductImpl implements IProductoService {
 
 	@Override
 	public void deleteById(int productoId) {
-		// TODO Auto-generated method stub
+
+		this.productRepository.deleteById(productoId);
 
 	}
 
