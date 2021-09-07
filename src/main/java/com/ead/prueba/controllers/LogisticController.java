@@ -20,7 +20,8 @@ public class LogisticController {
 	private ILogisticService logisticService;
 	
 	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> index() {
+	public ResponseEntity<Object> index() {
 		return ResponseEntity.ok(this.logisticService.findAll());
 	}
+
 }

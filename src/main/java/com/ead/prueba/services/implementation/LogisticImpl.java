@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.ead.prueba.dto.LogisticaDTO;
 import com.ead.prueba.dto.LogisticaRequest;
@@ -12,6 +13,7 @@ import com.ead.prueba.repository.LogisticRepository;
 import com.ead.prueba.services.interfaces.ILogisticService;
 import com.ead.prueba.utils.helpers.MHelpers;
 
+@Component
 public class LogisticImpl implements ILogisticService {
 
 	@Autowired
