@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ead.prueba.dto.ClienteRequest;
 import com.ead.prueba.dto.ProductoRequest;
 import com.ead.prueba.services.interfaces.IProductoService;
 import com.ead.prueba.utils.exceptions.ApiUnprocessableEntity;
@@ -51,6 +50,7 @@ public class ProductController {
 		return ResponseEntity.ok(Boolean.TRUE);
 
 	}
+	
 	
 	@PutMapping(value = "/{productoId}/update")
 	public ResponseEntity<Object> updateProduct(@RequestBody ProductoRequest request, @PathVariable int productoId) throws ApiUnprocessableEntity {

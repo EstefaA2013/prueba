@@ -31,13 +31,9 @@ public class Producto implements Serializable {
 	private String tipoProducto;
 	@Column(name = "cantidad_producto")
 	private int cantidadProducto;
-	@ManyToOne
-	@MapsId
-	@JoinColumn(name = "id_cliente")
-	private Cliente cliente;
-	@ManyToOne
-	@MapsId
-	@JoinColumn(name = "id_logistica")
-	private Logistica logistica;
+	@Column(name = "id_cliente")
+	private int idCliente;
+	@Column(name = "id_logistica")
+	private int idLogistica;
 
 }

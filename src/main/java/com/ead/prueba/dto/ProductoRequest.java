@@ -21,7 +21,7 @@ public class ProductoRequest implements Serializable {
 	@JsonProperty(value = "cantidad_producto")
 	private int cantidadProducto;
 	@JsonProperty(value = "id_cliente")
-	private Cliente cliente;
+	private int idCliente;
 	@JsonProperty(value = "id_logistica")
-	private Logistica logistica;
+	private int idLogistica;
 }

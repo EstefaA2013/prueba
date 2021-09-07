@@ -38,8 +38,4 @@ public class Transporte implements Serializable {
 	@Column(name = "numero_guia")
 	private String numero_guia;
 	
-	@OneToMany(mappedBy = "transporte")
-	private Collection<Logistica> logisticas;
-	
-	
 }

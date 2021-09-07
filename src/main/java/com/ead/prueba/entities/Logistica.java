@@ -40,15 +40,10 @@ public class Logistica implements Serializable {
 	private Date fechaEntrega;
 	@Column(name = "precio_envio")
 	private double precioEnvio;
-	@ManyToOne
-	@MapsId
-	@JoinColumn(name = "codigo_transporte")
-	private Transporte transporte;
+	@Column(name = "codigo_transporte")
+	private int codigoTransporte;
 	@Column(name = "descuento")
 	private double descuento;
-	
-	@OneToMany(mappedBy = "logistica")
-	private Collection<Producto> productos;
 	
 	
 	@PrePersist

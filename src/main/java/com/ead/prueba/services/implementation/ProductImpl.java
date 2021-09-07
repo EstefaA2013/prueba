@@ -1,16 +1,17 @@
 package com.ead.prueba.services.implementation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ead.prueba.dto.ClienteRequest;
 import com.ead.prueba.dto.ProductoDTO;
 import com.ead.prueba.dto.ProductoRequest;
 import com.ead.prueba.entities.Cliente;
-import com.ead.prueba.entities.Logistica;
 import com.ead.prueba.entities.Producto;
 import com.ead.prueba.repository.ProductRepository;
 import com.ead.prueba.services.interfaces.IProductoService;
@@ -59,12 +60,7 @@ public class ProductImpl implements IProductoService {
 	@Override
 	public void save(ProductoRequest producto) {
 		Producto productos = MHelpers.modelMapper().map(producto, Producto.class);
-        Cliente cliente = new Cliente();
-        cliente.setId(cliente.getId());
-		productos.setCliente(cliente);
-		Logistica logistica = new Logistica();
-		logistica.setId(logistica.getId());
-		productos.setLogistica(logistica);
+
 		this.productRepository.save(productos);
 	}
 
@@ -77,7 +73,9 @@ public class ProductImpl implements IProductoService {
         	
         	producto.setTipoProducto(request.getTipoProducto());;
         	producto.setCantidadProducto(request.getCantidadProducto());        	
-        
+            producto.setIdCliente(request.getIdCliente());
+        	producto.setIdLogistica(request.getIdLogistica());
+            
         	this.productRepository.save(producto);
         } else {
         	message("El id del producto no existe");
@@ -89,7 +87,15 @@ public class ProductImpl implements IProductoService {
 
 	@Override
 	public void saveAll(List<ProductoRequest> producto) {
-		// TODO Auto-generated method stub
+		 List<Producto> p = new ArrayList<>();
+
+		 for (ProductoRequest productos : producto) {
+
+				Producto pr = MHelpers.modelMapper().map(producto, Producto.class);
+
+				p.add(pr);
+			}
+		 this.productRepository.saveAll(p);
 
 	}
 

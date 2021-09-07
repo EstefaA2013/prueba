@@ -19,6 +19,6 @@ public class LogisticaDTO implements Serializable{
 	private Date fechaRegistro;
 	private Date fechaEntrega;
 	private double precioEnvio;
-	private Transporte transporte;
+	private int codigoTransporte;
 	private double descuento;
 }

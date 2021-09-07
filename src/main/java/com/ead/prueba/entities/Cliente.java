@@ -34,7 +34,4 @@ public class Cliente implements Serializable {
 	@Column(name = "celular")
 	private String celular;
 	
-	@OneToMany(mappedBy = "cliente")
-	private Collection<Producto> productos;
-	
 }

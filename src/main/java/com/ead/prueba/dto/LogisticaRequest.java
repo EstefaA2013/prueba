@@ -17,7 +17,7 @@ public class LogisticaRequest implements Serializable {/**
 	@JsonProperty(value = "precio_envio")
 	private double precioEnvio;
 	@JsonProperty(value = "codigo_transporte")
-	private int transporte;
+	private int codigoTransporte;
 	@JsonProperty(value = "descuento")
 	private double descuento;
 }
