@@ -6,9 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ead.prueba.dto.LogisticaRequest;
 import com.ead.prueba.services.interfaces.ILogisticService;
 
 
@@ -36,5 +38,13 @@ public class LogisticController {
 		 */
 		return ResponseEntity.ok(this.logisticService.findByLogisticId(id));
 	}
+	
+	public ResponseEntity<Object> saveLogistic(@RequestBody LogisticaRequest request) {
+		
+		this.logisticService.save(request);
+		
+		return ResponseEntity.ok(Boolean.TRUE);
+	}
+	
 
 }

@@ -53,8 +53,10 @@ public class LogisticImpl implements ILogisticService {
 
 	@Override
 	public void save(LogisticaRequest logistica) {
-		// TODO Auto-generated method stub
+
+		Logistica logisticas = MHelpers.modelMapper().map(logistica, Logistica.class);
 		
+		this.logisticRepository.save(logisticas);
 	}
 
 	@Override
