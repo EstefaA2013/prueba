@@ -2,6 +2,7 @@ package com.ead.prueba.services.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -37,8 +38,17 @@ public class LogisticImpl implements ILogisticService {
 
 	@Override
 	public LogisticaDTO findByLogisticId(int logisticaId) {
-		// TODO Auto-generated method stub
-		return null;
+
+        Optional<Logistica> logistica = this.logisticRepository.findById(logisticaId);
+        
+        if(!logistica.isPresent()) {
+        	/*
+        	 * Si el id de la logistica no existe nos retorna un null
+        	 */
+        	return null;
+        }
+        
+		return MHelpers.modelMapper().map(logistica.get(), LogisticaDTO.class);
 	}
 
 	@Override
