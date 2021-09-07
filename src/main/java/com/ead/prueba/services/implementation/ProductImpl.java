@@ -1,17 +1,14 @@
 package com.ead.prueba.services.implementation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ead.prueba.dto.ClienteRequest;
 import com.ead.prueba.dto.ProductoDTO;
 import com.ead.prueba.dto.ProductoRequest;
-import com.ead.prueba.entities.Cliente;
 import com.ead.prueba.entities.Producto;
 import com.ead.prueba.repository.ProductRepository;
 import com.ead.prueba.services.interfaces.IProductoService;
