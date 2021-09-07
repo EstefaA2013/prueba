@@ -73,8 +73,8 @@ public class LogisticImpl implements ILogisticService {
 
 	@Override
 	public void deleteById(int logisticaId) {
-		// TODO Auto-generated method stub
-		
+       
+		this.logisticRepository.deleteById(logisticaId);
 	}
 
 	private LogisticaDTO convertToLogisticaDTO(final Logistica logistica) {
